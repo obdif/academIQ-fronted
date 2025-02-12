@@ -3,4 +3,17 @@
   margin: 0 auto;
   padding: 0 auto;
   text-align: center;
+  overflow-x: hidden;
+  /* background: black; */
+}
+
+
+
+
+.sideBar{
+  background: black;
+  height: 100vh;
+  color: whitesmoke;
+  position: fixed;
+  padding-top: 80px;
 }

@@ -1,0 +1,23 @@
+{/* Features */}
+{/* <div className="grid md:grid-cols-2 gap-8">
+    <div className="bg-[#0EA8FF]/20 p-8 rounded-xl shadow-sm backdrop-blur-sm">
+      <div className="bg-[#0EA8FF] w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <BookOpen className="text-white w-6 h-6" />
+      </div>
+      <h3 className="text-xl font-semibold text-gray-200 mb-4 font-sans">Structured Lessons</h3>
+      <p className="text-gray-300 font-sans">
+        Complex topics broken down into digestible key points with real-world examples and practical applications.
+      </p>
+    </div>
+    <div className="bg-[#0EA8FF]/20 p-8 rounded-xl shadow-sm backdrop-blur-sm">
+      <div className="bg-[#0EA8FF] w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
+        <Brain className="text-white w-6 h-6" />
+      </div>
+      <h3 className="text-xl font-semibold text-gray-200 mb-4 font-sans">Interactive Quizzes</h3>
+      <p className="text-gray-300 font-sans">
+        Test your knowledge with AI-generated quizzes that adapt to your learning progress.
+      </p>
+    </div>
+  </div> */}
+
+  
