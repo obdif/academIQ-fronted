@@ -17,3 +17,10 @@
   position: fixed;
   padding-top: 80px;
 }
+
+.content{
+  max-width: 1000px;
+  position: relative;
+  justify-content: center;
+  margin: auto;
+}

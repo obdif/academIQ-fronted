@@ -8,6 +8,9 @@ function Home() {
   const [searchHistory, setSearchHistory] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState(null);
+  const [selectedAnswers, setSelectedAnswers] = useState({});
+  
+
 
   // Load search history from localStorage on component mount
   useEffect(() => {
@@ -19,8 +22,12 @@ function Home() {
 
   // Save search history to localStorage whenever it changes
   useEffect(() => {
-    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+    if (searchHistory.length > 0) {
+      localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+    }
   }, [searchHistory]);
+
+
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -44,7 +51,11 @@ function Home() {
       
         const data = await response.json();
         setResponseData(data);
-        setSearchHistory(prev => [searchQuery, ...prev].slice(0, 10));
+        setSearchHistory((prev) => {
+          const newHistory = [searchQuery, ...prev.filter((item) => item !== searchQuery)];
+          return newHistory.slice(0, 10);
+        });
+
         setSearchQuery('');
       } catch (error) {
         console.error('Error:', error);
@@ -57,6 +68,18 @@ function Home() {
         setIsLoading(false);
       }
     }
+  };
+
+
+  const clearHistory = () => {
+    setSearchHistory([]);
+    localStorage.removeItem('searchHistory');
+  };
+
+
+  const formatTextWithBold = (text) => {
+    const formattedText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+    return { __html: formattedText };
   };
 
 
@@ -109,6 +132,7 @@ function Home() {
         onClose={() => setIsHistoryOpen(false)}
         searchHistory={searchHistory}
         setSearchQuery={setSearchQuery}
+        clearHistory={clearHistory}
       />
 
       {/* Main Content */}
@@ -152,23 +176,33 @@ function Home() {
 
 
 
+              {/* Your Prompt Here */}
 
+              {/* <div className="max-w-2xl text-white justify-right text-left items-right relative right-0 align-right mb-16 bg-[#0EA8FF] p-4 rounded-lg shadow-sm"> 
+                  <p>{query}</p>
+              </div> */}
 
               {/* Display Backend Response */}
               {responseData && (
-                <div className="mt-12">
+                <div className="mt-12 content">
                   {/* Text Content */}
-                  <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4 font-sans">Explanation</h2>
-                    <p className="text-gray-700 whitespace-pre-line font-sans">{responseData.text_content}</p>
+                  <div className="bg-white backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
+                    <h2 className="text-2xl font-bold text-[#0EA8FF] text-left mb-3 font-sans">Explanation</h2>
+                    <div className='h-0.5 w-full bg-[#0EA8FF] mb-6'></div>
+                    <p 
+                  className="text-gray-800 whitespace-pre-line text-left font-sans"
+                  dangerouslySetInnerHTML={formatTextWithBold(responseData.text_content)}
+                />
+                    {/* <p className="text-gray-800 whitespace-pre-line text-left font-sans">{responseData.text_content}</p> */}
                   </div>
 
                   {/* Quiz Questions */}
-                  <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
-                    <h2 className="text-2xl font-bold text-gray-900 mb-4 font-sans">Quiz</h2>
+                  <div className="bg-white backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
+                  <h2 className="text-2xl font-bold text-[#0EA8FF] text-left mb-3 font-sans">Quiz</h2>
+                  <div className='h-0.5 w-full bg-[#0EA8FF] mb-6'></div>
                     {responseData.quiz_questions.map((question, index) => (
                       <div key={index} className="mb-6">
-                        <h3 className="text-lg font-semibold text-gray-900 mb-2 font-sans">{question.question}</h3>
+                        <h3 className="text-lg font-semibold text-left text-gray-900 mb-2 font-sans">{question.question}</h3>
                         <div className="space-y-2">
                           {question.options.map((option, idx) => (
                             <div key={idx} className="flex items-center">
@@ -184,7 +218,7 @@ function Home() {
                             </div>
                           ))}
                         </div>
-                        <p className="text-sm text-gray-500 mt-2 font-sans">Hint: {question.hint}</p>
+                        <p className="text-sm text-gray-500 mt-1 mb-8 font-sans">Hint: {question.hint}</p>
                       </div>
                     ))}
                   </div>
@@ -192,7 +226,8 @@ function Home() {
                   {/* Image */}
                   {responseData.image_url && (
                     <div className="bg-white/90 backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
-                      <h2 className="text-2xl font-bold text-gray-900 mb-4 font-sans">Visual Guide</h2>
+                      <h2 className="text-2xl font-bold text-[#0EA8FF] text-left mb-3 font-sans">Visual Guide</h2>
+                      <div className='h-0.5 w-full bg-[#0EA8FF] mb-6'></div>
                       <img
                         src={responseData.image_url}
                         alt={responseData.image_description}
