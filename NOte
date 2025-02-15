@@ -1,5 +1,4 @@
-{/* Features */}
-{/* <div className="grid md:grid-cols-2 gap-8">
+<!-- <div className="grid md:grid-cols-2 gap-8">
     <div className="bg-[#0EA8FF]/20 p-8 rounded-xl shadow-sm backdrop-blur-sm">
       <div className="bg-[#0EA8FF] w-12 h-12 rounded-lg flex items-center justify-center mx-auto mb-4">
         <BookOpen className="text-white w-6 h-6" />
@@ -18,6 +17,6 @@
         Test your knowledge with AI-generated quizzes that adapt to your learning progress.
       </p>
     </div>
-  </div> */}
+  </div> 
 
-  
+   -->

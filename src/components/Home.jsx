@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, GraduationCap, Brain, Search, ArrowRight, Menu } from 'lucide-react';
-import SideBar from './SideBar';
+import SideBar from './Sidebar';
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
