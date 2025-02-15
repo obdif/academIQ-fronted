@@ -103,7 +103,7 @@ const SideBar = ({ isOpen, onClose, searchHistory, setSearchQuery, clearHistory 
         {searchHistory.length > 0 && (
           <button
             onClick={clearHistory}
-            className="mt-4 w-full bg-red-500 text-white cursor-pointer py-2 rounded-lg hover:bg-red-600 transition duration-200"
+            className="mt-4 w-full absolute right-0 bottom-0 bg-red-500 text-white cursor-pointer py-2 rounded-lg hover:bg-red-600 transition duration-200"
           >
             Clear History
           </button>

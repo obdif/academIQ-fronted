@@ -9,9 +9,10 @@ function Home() {
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState(null);
   const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [submittedQuery, setSubmittedQuery] = useState('');
   
 
-
+  
   // Load search history from localStorage on component mount
   useEffect(() => {
     const savedHistory = localStorage.getItem('searchHistory');
@@ -33,6 +34,7 @@ function Home() {
     e.preventDefault();
     if (searchQuery.trim()) {
       setIsLoading(true);
+      setSubmittedQuery(searchQuery);
 
       try {
         const response = await fetch('https://academiq-backend.onrender.com', {
@@ -70,6 +72,9 @@ function Home() {
     }
   };
 
+
+
+  
 
   const clearHistory = () => {
     setSearchHistory([]);
@@ -178,9 +183,15 @@ function Home() {
 
               {/* Your Prompt Here */}
 
-              {/* <div className="max-w-2xl text-white justify-right text-left items-right relative right-0 align-right mb-16 bg-[#0EA8FF] p-4 rounded-lg shadow-sm"> 
-                  <p>{query}</p>
-              </div> */}
+              {submittedQuery && (
+                <div className="relative  right-0 mt-6 mb-8 bg-[#0EA8FF] text-white p-4 rounded-lg shadow-sm w-1/3">
+                  <p className="text-lg font-bold">You searched for:</p>
+                  <p className="text-md">{submittedQuery}</p>
+                </div>
+              )}
+
+
+
 
               {/* Display Backend Response */}
               {responseData && (
