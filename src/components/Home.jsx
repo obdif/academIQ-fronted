@@ -115,13 +115,13 @@ function Home() {
       <nav className="bg-[#0EA8FF] fixed w-full z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="flex items-center">
+            <div className="flex items-center cursor-pointer">
               <GraduationCap className="w-8 h-8 text-white" />
               <span className="ml-2 text-xl font-bold text-white font-sans">AcademIQ</span>
             </div>
             <button
               onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-              className="text-white hover:text-[#0074C4] focus:outline-none"
+              className="text-white cursor-pointer hover:text-[#0074C4] focus:outline-none"
               aria-label="Toggle history"
               aria-expanded={isHistoryOpen}
             >
@@ -184,7 +184,7 @@ function Home() {
               {/* Your Prompt Here */}
 
               {submittedQuery && (
-                <div className="relative  right-0 mt-6 mb-8 bg-[#0EA8FF] text-white p-4 rounded-lg shadow-sm w-1/3">
+                <div className="relative search  right-0 mt-6 mb-8 bg-[#0EA8FF] text-white p-4 rounded-lg shadow-sm w-1/3">
                   <p className="text-lg font-bold">You searched for:</p>
                   <p className="text-md">{submittedQuery}</p>
                 </div>
@@ -300,11 +300,11 @@ function Home() {
 
 
               {/* Credit */}
-              <div className="mt-16 text-center text-gray-400 font-sans">
+              <div className="mt-16 text-center text-gray-500 font-sans">
                 <p>
-                  Made with ❤️ by{' '}
+                 &copy; 2025 made with ❤️ by{' '}
                   <a
-                    href="https://adekunleblessing.netlify.app/" className='text-[#0EA8FF]' target='_blank'>Adekunle Blessing</a>
+                    href="https://adekunleblessing.netlify.app/" className='text-[#0EA8FF] font-medium' target='_blank'> Adekunle Blessing</a>
                 </p>
               </div>
 

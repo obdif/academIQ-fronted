@@ -74,7 +74,7 @@ const SideBar = ({ isOpen, onClose, searchHistory, setSearchQuery, clearHistory 
           </div>
           <button
             onClick={onClose}
-            className="text-sm text-[#0EA8FF] hover:text-[#008CE3] font-sans md:hidden"
+            className="text-sm cursor-pointer text-[#0EA8FF] hover:text-[#008CE3] font-sans md:hidden"
           >
             <X className="w-6 h-6" />
           </button>
@@ -102,7 +102,7 @@ const SideBar = ({ isOpen, onClose, searchHistory, setSearchQuery, clearHistory 
 
         {searchHistory.length > 0 && (
           <button
-            onClick={clearHistory}
+            onClick={clearHistory} 
             className="mt-4 w-full absolute right-0 bottom-0 bg-red-500 text-white cursor-pointer py-2 rounded-lg hover:bg-red-600 transition duration-200"
           >
             Clear History

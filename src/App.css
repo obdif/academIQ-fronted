@@ -24,3 +24,10 @@
   justify-content: center;
   margin: auto;
 }
+
+
+@media (max-width: 900px) {
+  .search{
+    width: 100%;
+  }
+}
