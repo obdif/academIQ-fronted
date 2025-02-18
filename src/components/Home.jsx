@@ -10,9 +10,9 @@ function Home() {
   const [responseData, setResponseData] = useState(null);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [submittedQuery, setSubmittedQuery] = useState('');
-  
 
-  
+
+
   // Load search history from localStorage on component mount
   useEffect(() => {
     const savedHistory = localStorage.getItem('searchHistory');
@@ -50,7 +50,7 @@ function Home() {
           throw new Error('Failed to fetch data from the backend');
         }
 
-      
+
         const data = await response.json();
         setResponseData(data);
         setSearchHistory((prev) => {
@@ -74,7 +74,7 @@ function Home() {
 
 
 
-  
+
 
   const clearHistory = () => {
     setSearchHistory([]);
@@ -193,6 +193,8 @@ function Home() {
 
 
 
+
+
               {/* Display Backend Response */}
               {responseData && (
                 <div className="mt-12 content">
@@ -200,17 +202,17 @@ function Home() {
                   <div className="bg-white backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
                     <h2 className="text-2xl font-bold text-[#0EA8FF] text-left mb-3 font-sans">Explanation</h2>
                     <div className='h-0.5 w-full bg-[#0EA8FF] mb-6'></div>
-                    <p 
-                  className="text-gray-800 whitespace-pre-line text-left font-sans"
-                  dangerouslySetInnerHTML={formatTextWithBold(responseData.text_content)}
-                />
+                    <p
+                      className="text-gray-800 whitespace-pre-line text-left font-sans"
+                      dangerouslySetInnerHTML={formatTextWithBold(responseData.text_content)}
+                    />
                     {/* <p className="text-gray-800 whitespace-pre-line text-left font-sans">{responseData.text_content}</p> */}
                   </div>
 
                   {/* Quiz Questions */}
                   <div className="bg-white backdrop-blur-sm p-6 rounded-lg shadow-sm mb-8">
-                  <h2 className="text-2xl font-bold text-[#0EA8FF] text-left mb-3 font-sans">Quiz</h2>
-                  <div className='h-0.5 w-full bg-[#0EA8FF] mb-6'></div>
+                    <h2 className="text-2xl font-bold text-[#0EA8FF] text-left mb-3 font-sans">Quiz</h2>
+                    <div className='h-0.5 w-full bg-[#0EA8FF] mb-6'></div>
                     {responseData.quiz_questions.map((question, index) => (
                       <div key={index} className="mb-6">
                         <h3 className="text-lg font-semibold text-left text-gray-900 mb-2 font-sans">{question.question}</h3>
@@ -251,6 +253,10 @@ function Home() {
                   )}
                 </div>
               )}
+
+
+
+
 
 
 
@@ -302,7 +308,7 @@ function Home() {
               {/* Credit */}
               <div className="mt-16 text-center text-gray-500 font-sans">
                 <p>
-                 &copy; 2025 made with ❤️ by{' '}
+                  &copy; 2025 made with ❤️ by{' '}
                   <a
                     href="https://adekunleblessing.netlify.app/" className='text-[#0EA8FF] font-medium' target='_blank'> Adekunle Blessing</a>
                 </p>
