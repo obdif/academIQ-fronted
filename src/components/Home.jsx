@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { BookOpen, GraduationCap, Brain, Search, ArrowRight, Menu } from 'lucide-react';
 import SideBar from './Sidebar';
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 function Home() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -62,9 +66,9 @@ function Home() {
       } catch (error) {
         console.error('Error:', error);
         if (error.message.includes('Failed to fetch')) {
-          alert('Network error. Please check your internet connection.');
+          toast.error('Network error. Please check your internet connection.');
         } else {
-          alert('Server error. Please try again later.');
+          toast.error('Server error. Please try again later.');
         }
       } finally {
         setIsLoading(false);
@@ -93,6 +97,21 @@ function Home() {
       className="min-h-screen w-full bg-cover bg-center bg-no-repeat"
       style={{ backgroundImage: `url('https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80')` }}
     >
+
+
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
+
       {/* Backdrop for mobile history sidebar */}
       {isHistoryOpen && (
         <div
@@ -253,6 +272,11 @@ function Home() {
                   )}
                 </div>
               )}
+
+
+
+
+
 
 
 
