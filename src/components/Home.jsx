@@ -267,7 +267,7 @@ function Home() {
                         loading="lazy"
                       />
 
-                      <p className="text-sm text-gray-500 mt-2 font-sans">{responseData.image_description}</p>
+                      <p className="text-sm text-gray-500 mt-2 font-sans">{responseData.image_title}</p>
                     </div>
                   )}
                 </div>
